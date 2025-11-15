@@ -1,3 +1,8 @@
+Here is the **fully fixed, clean, properly formatted README.md**, all in **one single Markdown block**, ready to **copy–paste without breaking**:
+
+---
+
+```markdown
 # 🥗 DietWhisper — AI Diet Coach  
 A FastAPI + Gemini-powered nutrition assistant
 
@@ -19,16 +24,17 @@ It provides personalized diet and nutrition recommendations through a clean chat
 
 ## 📁 Project Structure
 
-project/
-│── main.py # FastAPI backend with Gemini integration
-│── index.html # Frontend chat interface
-│── requirements.txt # Python dependencies
-│── .env # Environment variables (Gemini API key)
-│── how_to_run.txt # Instructions to run backend
-│── main.cpython-310.pyc # Bytecode (not used directly)
+```
 
-yaml
-Copy code
+project/
+│── main.py                   # FastAPI backend with Gemini integration
+│── index.html                # Frontend chat interface
+│── requirements.txt          # Python dependencies
+│── .env                      # Environment variables (Gemini API key)
+│── how_to_run.txt            # Instructions to run backend
+│── main.cpython-310.pyc      # Bytecode file (not used directly)
+
+```
 
 ---
 
@@ -36,128 +42,156 @@ Copy code
 
 The backend is built with:
 
-- `fastapi`
-- `uvicorn`
-- `google-generativeai`
+- `fastapi`  
+- `uvicorn`  
+- `google-generativeai`  
 - `python-dotenv`
 
-Gemini is initialized via:
+Gemini is configured using a `.env` key:
+
+```
 
 GEMINI_API_KEY="use your gemini api key"
 
-pgsql
-Copy code
-:contentReference[oaicite:0]{index=0}
+```
 
-A `GenerativeModel("gemini-2.0-flash-exp")` is used for generating nutrition advice.
+The backend uses:
 
-### **API Endpoints**
+```
 
-#### **POST /chat**
-Accepts JSON:
+GenerativeModel("gemini-2.0-flash-exp")
+
+````
+
+to generate nutrition advice.
+
+---
+
+## 🛠 API Endpoints
+
+### **POST /chat**
+Request:
 ```json
 { "message": "Give me a healthy breakfast idea" }
-Returns:
+````
 
-json
-Copy code
+Response:
+
+```json
 { "reply": "AI-generated nutrition advice..." }
-POST /chat-json
-Same functionality but reads raw JSON body.
+```
 
-GET /health
-Returns:
+---
 
-json
-Copy code
+### **POST /chat-json**
+
+Same as `/chat`, but reads raw JSON manually.
+
+---
+
+### **GET /health**
+
+Response:
+
+```json
 { "status": "healthy" }
-🌐 Frontend Overview (index.html)
-The frontend includes:
+```
 
-Modern glassmorphic UI
+---
 
-Animated gradients
+## 🌐 Frontend Overview (`index.html`)
 
-Beautiful chat bubble system
+The frontend offers:
 
-Quick suggestion chips for users
+* Modern glassmorphic UI
+* Animated gradients
+* Chat bubble messaging
+* Quick suggestion chips
+* Auto-expanding input textarea
+* Smooth animations
+* Rich AI message formatting (lists, bold text, paragraphs)
 
-Auto-resizing message input
+It communicates with the backend via:
 
-Smooth message animations
-
-AI message formatting (bold, lists, paragraphs)
-
-It sends user messages to:
-
-bash
-Copy code
+```
 POST http://localhost:8000/chat
-and renders AI responses dynamically.
+```
 
-🔑 Environment Variables (.env)
-Your .env file should include:
+---
 
-env
-Copy code
+## 🔑 Environment Variables (`.env`)
+
+Make sure you have:
+
+```env
 GEMINI_API_KEY="use your gemini api key"
-📦 Installation & Setup
-1. Install dependencies
-nginx
-Copy code
+```
+
+---
+
+## 📦 Installation & Setup
+
+### **1. Install dependencies**
+
+```bash
 pip install -r requirements.txt
+```
 
-requirements
+### **2. Start the FastAPI backend**
 
-
-2. Start the FastAPI backend
-nginx
-Copy code
+```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
-(From how_to_run.txt)
+```
 
-how_to_run
+### **3. Open the frontend**
 
+Simply open:
 
-3. Open the frontend
-Simply open index.html in any browser.
+```
+index.html
+```
 
-▶️ How to Use
-Run the backend (uvicorn main:app --reload)
+in your browser.
 
-Open index.html
+---
 
-Type your nutrition question
+## ▶️ How to Use
 
-Get personalized diet coaching instantly
+1. Start the FastAPI server
+2. Open the `index.html` file
+3. Type any nutrition-related question
+4. Receive personalized diet recommendations instantly
 
-🧠 How DietWhisper Works
-User sends a message from the HTML chat UI
+---
 
-JavaScript sends it to the FastAPI /chat endpoint
+## 🧠 How DietWhisper Works
 
-Backend constructs a prompt:
+1. User types a question in the web UI
+2. A JavaScript `fetch()` call sends it to `/chat`
+3. FastAPI constructs a prompt:
 
-"You are a friendly and supportive diet coach named DietWhisper..."
+   > "You are a friendly and supportive diet coach named DietWhisper..."
+4. Gemini 2.0 Flash processes the prompt
+5. Response is returned and beautifully formatted in the UI
 
-Gemini 2.0 Flash generates a helpful, supportive response
+---
 
-The response is styled and displayed beautifully in the chat UI
+## 📚 Requirements (`requirements.txt`)
 
-📚 Requirements (requirements.txt)
-nginx
-Copy code
+```
 fastapi
 uvicorn
 python-dotenv
 google-genai
-❤️ Future Improvements
-🔒 Add user authentication
+```
 
-📊 Add calorie tracking & nutrition breakdown
+---
 
-☁️ Deploy backend (Render, Railway, or AWS)
+## ❤️ Future Improvements
 
-📱 Build mobile app frontend
+* 🔒 Add user login & preferences
+* 📊 Include calorie & macronutrient breakdown
+* ☁️ Cloud deployment (Render, Railway, AWS)
+* 📱 Mobile app interface
+* 💾 Save chat history per user
 
-💾 Add session-based or persistent chat history
