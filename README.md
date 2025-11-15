@@ -1,8 +1,3 @@
-Here is the **fully fixed, clean, properly formatted README.md**, all in **one single Markdown block**, ready to **copy–paste without breaking**:
-
----
-
-```markdown
 # 🥗 DietWhisper — AI Diet Coach  
 A FastAPI + Gemini-powered nutrition assistant
 
